@@ -231,3 +231,18 @@ class Tbl_System_Config(models.Model):
                 system_config_id=a.system_config_id).update(
                 salt=encrypted['salt'], cipher_text=encrypted['cipher_text'], nonce=encrypted['nonce'],
                 tag=encrypted['tag'])
+
+class Tbl_Salman(models.Model):
+    salman_id = models.AutoField(primary_key=True)
+
+    #for task configuration
+    create_task_after_min = models.BigIntegerField(blank=True, null=True)  # task will be create after this minutes
+    task_deadline_min = models.BigIntegerField(blank=True, null=True)  # task deadline
+
+    #for book_by reward
+    reward_amount = models.BigIntegerField(blank=True, null=True)
+
+    def __str__(self):
+        return str(self.system_config_id)
+
+
